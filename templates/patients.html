@@ -1,0 +1,70 @@
+<!-- patients.html -->
+
+{% extends "base.html" %}
+{% block title %}Patient Records - MedPredict AI{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+  <div class="col-12">
+    <h2 class="text-white mb-0">
+      <i class="fas fa-users me-2"></i>Patient Records
+    </h2>
+    <p class="text-white opacity-75">
+      Manage and view all patient predictions
+    </p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <!-- FIX: Changed 'records' to 'patients' to match the variable from the backend -->
+    {% if patients %}
+      <div class="table-responsive">
+        <table class="table align-middle table-hover mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Patient</th>
+              <th>Age</th>
+              <th>Risk</th>
+              <th>Probability</th>
+              <th>Doctor</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- FIX: Changed 'r in records' to 'r in patients' -->
+            {% for r in patients %}
+            <tr>
+              <td>{{ r.patient_id }}</td>
+              <td>{{ r.age }}</td>
+              <td>
+                {% if r.risk == "High" %}
+                  <span class="badge bg-danger">{{ r.risk }}</span>
+                {% elif r.risk == "Medium" %}
+                  <span class="badge bg-warning text-dark">{{ r.risk }}</span>
+                {% else %}
+                  <span class="badge bg-success">{{ r.risk }}</span>
+                {% endif %}
+              </td>
+              <!-- FIX: Accessing r.probability correctly -->
+              <td>{{ "%.2f"|format(r.probability|float) }}%</td>
+              <!-- FIX: Accessing r.doctor and r.timestamp -->
+              <td>{{ r.doctor }}</td>
+              <td>{{ r.timestamp }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="text-center py-5 text-muted">
+        <i class="fas fa-users fa-3x mb-3"></i>
+        <p class="mb-1">No patient records found.</p>
+        <a href="{{ url_for('predict') }}" class="btn btn-gradient btn-sm">
+          <i class="fas fa-plus me-1"></i>Create First Prediction
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

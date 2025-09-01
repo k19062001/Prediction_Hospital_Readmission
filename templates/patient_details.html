@@ -1,0 +1,53 @@
+<!-- patient_details.html -->
+<form>
+  <label>Patient ID</label>
+  <input type="text" name="patient_id" value="{{ patient.patient_id }}" readonly />
+
+  <label>Age</label>
+  <input type="number" name="age" value="{{ patient.age }}" min="1" max="120" readonly />
+
+  <label>Gender</label>
+  <select name="gender" disabled>
+    <option value="Male" {% if patient.gender == 'Male' %}selected{% endif %}>Male</option>
+    <option value="Female" {% if patient.gender == 'Female' %}selected{% endif %}>Female</option>
+    <option value="Other" {% if patient.gender == 'Other' %}selected{% endif %}>Other</option>
+  </select>
+
+  <label>Blood Pressure</label>
+  <input type="text" name="blood_pressure" value="{{ patient.blood_pressure }}" readonly />
+
+  <label>Cholesterol (mg/dL)</label>
+  <input type="number" name="cholesterol" value="{{ patient.cholesterol }}" step="0.1" min="50" max="500" readonly />
+
+  <label>BMI (kg/m²)</label>
+  <input type="number" step="0.1" name="bmi" value="{{ patient.bmi }}" min="10" max="60" readonly />
+
+  <label>Diabetes</label>
+  <select name="diabetes" disabled>
+    <option value="Yes" {% if patient.diabetes == 'Yes' or patient.diabetes == 1 %}selected{% endif %}>Yes</option>
+    <option value="No" {% if patient.diabetes == 'No' or patient.diabetes == 0 %}selected{% endif %}>No</option>
+  </select>
+
+  <label>Hypertension</label>
+  <select name="hypertension" disabled>
+    <option value="Yes" {% if patient.hypertension == 'Yes' or patient.hypertension == 1 %}selected{% endif %}>Yes</option>
+    <option value="No" {% if patient.hypertension == 'No' or patient.hypertension == 0 %}selected{% endif %}>No</option>
+  </select>
+
+  <label>Medication Count</label>
+  <input type="number" name="medication_count" value="{{ patient.medication_count }}" min="0" max="50" readonly />
+
+  <label>Length of Stay (days)</label>
+  <input type="number" name="length_of_stay" value="{{ patient.length_of_stay }}" min="1" max="100" readonly />
+
+  <label>Discharge Destination</label>
+  <select name="discharge_destination" disabled>
+    <option value="Home" {% if patient.discharge_destination == 'Home' %}selected{% endif %}>Home</option>
+    <option value="Nursing_Facility" {% if patient.discharge_destination == 'Nursing_Facility' %}selected{% endif %}>Nursing Facility</option>
+    <option value="Rehab" {% if patient.discharge_destination == 'Rehab' %}selected{% endif %}>Rehabilitation Center</option>
+    <option value="Other" {% if patient.discharge_destination == 'Other' %}selected{% endif %}>Other</option>
+  </select>
+
+  <label>Readmitted in 30 Days</label>
+  <input type="text" name="readmitted_30_days" value="{{ patient.readmitted_30_days }}" readonly />
+</form>

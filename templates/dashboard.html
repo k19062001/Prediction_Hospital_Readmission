@@ -1,0 +1,649 @@
+{% extends "base.html" %} {% block title %}Dashboard · MedPredict AI{% endblock
+%} {% block content %}
+<!-- Header -->
+<div class="row mb-5">
+  
+
+  <div class="col-12 d-flex align-items-center justify-content-between">
+    <div>
+      <h1 class="text-white fw-semibold mb-1 d-flex align-items-center gap-2">
+        <i class="fas fa-heartbeat"></i>
+        MedPredict Dashboard
+      </h1>
+      <p class="text-white-50 mb-0">
+        Operational snapshot, model signals, and recent activity
+      </p>
+    </div>
+
+    <!-- Quick Filters (client-side only) -->
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+      <div class="input-group input-group-sm" style="width: 260px">
+        <span class="input-group-text bg-dark text-white-50 border-0"
+          ><i class="far fa-calendar"></i
+        ></span>
+        <input id="fromDate" type="date" class="form-control" />
+        <input id="toDate" type="date" class="form-control" />
+      </div>
+      <div class="btn-group btn-group-sm" role="group">
+        <button class="btn btn-outline-light active" data-risk="all">
+          All
+        </button>
+        <button class="btn btn-outline-light" data-risk="High">
+          <i class="fas fa-arrow-up me-1 text-danger"></i>High
+        </button>
+        <button class="btn btn-outline-light" data-risk="Low">
+          <i class="fas fa-arrow-down me-1 text-success"></i>Low
+        </button>
+      </div>
+      <button id="applyFilters" class="btn btn-gradient btn-sm">
+        <i class="fas fa-sync me-1"></i>Refresh
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- KPI Cards -->
+<div class="row g-3 mb-4">
+  <div class="col-sm-6 col-lg-3">
+    <div class="kpi card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <div class="kpi-label">Total Predictions</div>
+            <div class="kpi-value">{{ stats.total_predictions or 0 }}</div>
+            <div class="kpi-sub text-muted" id="kpi-total-sub">
+              Last 7 days: <span data-bind="total7">—</span>
+            </div>
+          </div>
+          <i class="fas fa-calculator fa-2x text-info"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <div class="kpi card shadow-sm border-0 h-100">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <div class="kpi-label">High Risk Cases</div>
+                    <div class="kpi-value text-danger">
+                        {{ stats.high_risk_count or 0 }}
+                    </div> <!-- FIX: ADDED THE MISSING CLOSING </div> TAG HERE -->
+                    <div class="kpi-sub text-muted">
+                        {{ "%.1f"|format(((stats.high_risk_count or 0) / (stats.total_predictions or 1)) * 100) }}% of total
+                    </div>
+                </div>
+                <i class="fas fa-exclamation-triangle fa-2x text-danger"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="col-sm-6 col-lg-3">
+    <div class="kpi card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <div class="kpi-label">Low Risk Cases</div>
+            <div class="kpi-value text-success">
+              {{ stats.low_risk_count or 0 }}
+            </div>
+            <div class="kpi-sub text-muted">
+    {{ "%.1f"|format(((stats.low_risk_count or 0) / (stats.total_predictions or 1)) * 100) }}% of total
+</div>
+          </div>
+          <i class="fas fa-check-circle fa-2x text-success"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-lg-3">
+  <div class="kpi card shadow-sm border-0 h-100">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="kpi-label">Medium Risk Cases</div>
+          <div class="kpi-value text-warning">
+            {{ stats.medium_risk_count or 0 }}
+          </div>
+          <div class="kpi-sub text-muted">
+            {{ "%.1f"|format(((stats.medium_risk_count or 0) / (stats.total_predictions or 1)) * 100) }}% of total
+          </div>
+        </div>
+        <i class="fas fa-exclamation-circle fa-2x text-warning"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="col-sm-6 col-lg-3">
+    <div class="kpi card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <div class="kpi-label">Avg Patient Age</div>
+            <div class="kpi-value">
+              {{ "%.0f"|format(stats.avg_age or 0) }}<span class="kpi-unit">
+                yrs</span
+              >
+            </div>
+            <div class="kpi-sub text-muted">
+              Median: <span data-bind="median_age">—</span>
+            </div>
+          </div>
+          <i class="fas fa-user fa-2x text-warning"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Charts -->
+<div class="row g-4 mb-4">
+  <div class="col-lg-5">
+    <div class="card shadow-sm border-0 h-100">
+      <div
+        class="card-header bg-transparent d-flex align-items-center justify-content-between"
+      >
+        <h5 class="card-title mb-0">
+          <i class="fas fa-chart-pie me-2"></i>Risk Mix
+        </h5>
+        <button class="btn btn-sm btn-outline-secondary" id="exportRisk">
+          <i class="fas fa-download me-1"></i>CSV
+        </button>
+      </div>
+      <div class="card-body p-0">
+        <div id="riskChart" class="chart-box skeleton"></div>
+      </div>
+      <div class="card-footer small text-muted">
+        Shows the distribution of predictions by risk level
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-7">
+    <div class="card shadow-sm border-0 h-100">
+      <div
+        class="card-header bg-transparent d-flex align-items-center justify-content-between"
+      >
+        <h5 class="card-title mb-0">
+          <i class="fas fa-braille me-2"></i>Age vs. Risk Probability
+        </h5>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="toggleTrend"
+            checked
+          />
+          <label class="form-check-label small" for="toggleTrend"
+            >Trend line</label
+          >
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div id="ageRiskChart" class="chart-box skeleton"></div>
+      </div>
+      <div class="card-footer small text-muted">
+        Each dot is a patient prediction. The line helps reveal the age
+        correlation.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4 mb-4">
+  <div class="col-12">
+    <div class="card shadow-sm border-0">
+      <div
+        class="card-header bg-transparent d-flex align-items-center justify-content-between"
+      >
+        <h5 class="card-title mb-0">
+          <i class="fas fa-chart-line me-2"></i>Predictions Over Time
+        </h5>
+        <div class="d-flex align-items-center gap-2">
+          <select
+            id="timelineWindow"
+            class="form-select form-select-sm"
+            style="width: auto"
+          >
+            <option value="7">7 days</option>
+            <option value="14">14 days</option>
+            <option value="30" selected>30 days</option>
+            <option value="90">90 days</option>
+          </select>
+          <button class="btn btn-sm btn-outline-secondary" id="exportTimeline">
+            <i class="fas fa-download me-1"></i>CSV
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div id="timelineChart" class="chart-box skeleton"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Predictions -->
+<div class="row g-4">
+  <div class="col-12">
+    <div class="card shadow-sm border-0">
+      <div
+        class="card-header bg-transparent d-flex align-items-center justify-content-between"
+      >
+        <h5 class="card-title mb-0">
+          <i class="fas fa-clock me-2"></i>Recent Predictions
+        </h5>
+        <a href="{{ url_for('patients') }}" class="btn btn-sm btn-gradient"
+          >View all</a
+        >
+      </div>
+      <div class="card-body">
+        {% if stats.recent_predictions %}
+        <div class="table-responsive">
+          <table class="table align-middle table-hover mb-0">
+            <thead class="small text-muted">
+              <tr>
+                <th>Patient</th>
+                <th>Age</th>
+                <th>Risk</th>
+                <th>Probability</th>
+                <th>Doctor</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for record in stats.recent_predictions %}
+              <tr>
+                <td class="fw-semibold">{{ record.patient_id }}</td>
+                <td>{{ record.age }}</td>
+                <td> 
+                  <span
+                    class="badge rounded-pill px-3 py-2
+                      {% if record.risk == 'High' %} bg-danger-subtle text-danger
+                      {% elif record.risk == 'Medium' %} bg-warning-subtle text-warning
+                      {% else %} bg-success-subtle text-success {% endif %}"
+                  >
+                    <i
+                      class="fas
+                        {% if record.risk == 'High' %} fa-exclamation-triangle
+                        {% elif record.risk == 'Medium' %} fa-exclamation-circle
+                        {% else %} fa-check-circle {% endif %} me-1"
+                    ></i>
+                    {{ record.risk }}
+                  </span>
+                </td>
+                <td>{{ "%.3f"|format(record.probability) }}</td>
+                <td>{{ record.doctor_name or 'N/A' }}</td>
+                <td class="text-muted small">{{ record.timestamp }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% else %}
+        <div class="text-center py-5 text-muted">
+          <i class="fas fa-chart-bar fa-3x mb-3"></i>
+          <p class="mb-1">No recent predictions.</p>
+          <a href="{{ url_for('predict') }}" class="btn btn-gradient btn-sm"
+            ><i class="fas fa-plus me-1"></i>Make first prediction</a
+          >
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script>
+  // Utility: download CSV
+  function downloadCSV(filename, rows) {
+    const process = (v) =>
+      v === null || v === undefined ? "" : String(v).replace(/"/g, '""');
+    const csv = rows
+      .map((r) =>
+        r
+          .map(process)
+          .map((v) => `"${v}"`)
+          .join(",")
+      )
+      .join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+  }
+
+  // Skeleton helpers
+  function unsetSkeleton(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.remove("skeleton");
+    }
+  }
+  function setError(id, msg) {
+    const el = document.getElementById(id);
+    if (el)
+      el.innerHTML = `<div class="text-center text-danger py-5"><i class='fas fa-exclamation-triangle me-2'></i>${msg}</div>`;
+  }
+
+  // Read quick filter state
+  function currentFilters() {
+    const active = document.querySelector("[data-risk].active");
+    return {
+      risk: active ? active.getAttribute("data-risk") : "all",
+      from: document.getElementById("fromDate").value || null,
+      to: document.getElementById("toDate").value || null,
+      window: document.getElementById("timelineWindow").value,
+    };
+  }
+
+  // Attach risk toggle behavior
+  Array.from(document.querySelectorAll("[data-risk]")).forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll("[data-risk]")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
+  // Event: refresh
+  document.getElementById("applyFilters").addEventListener("click", () => {
+    loadRisk();
+    loadAgeRisk();
+    loadTimeline();
+  });
+
+  document
+    .getElementById("timelineWindow")
+    .addEventListener("change", loadTimeline);
+
+  document
+    .getElementById("toggleTrend")
+    .addEventListener("change", loadAgeRisk);
+
+  // Charts
+  function loadRisk() {
+    const q = currentFilters();
+    fetch(
+      `/api/risk-distribution-summary?risk=${encodeURIComponent(q.risk)}&from=${
+        q.from || ""
+      }&to=${q.to || ""}`
+    )    
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.statusText)))
+      .then((res) => {
+        unsetSkeleton("riskChart");
+        if (!res || !res.data || !res.data.length) {
+          setError("riskChart", "No data available");
+          return;
+        }
+        const COLOR_MAP = {
+          "High": "#ff4757",    // red
+          "Medium": "#ffa502",  // orange
+          "Low": "#2ed573"      // green
+        };
+
+        const data = res.data.map((trace) => ({
+          ...trace,
+          hole: 0.5,
+          type: "pie",
+          textinfo: "label+percent",
+          insidetextorientation: "radial",
+          marker: {
+            colors: trace.labels.map((lab) => COLOR_MAP[lab] || "#888")
+          }
+        }));
+
+        const layout = Object.assign(
+          {
+            margin: { t: 20, r: 20, b: 20, l: 20 },
+            showlegend: true,
+            legend: { orientation: "h", y: -0.1 },
+          },
+          res.layout || {}
+        );
+        Plotly.newPlot("riskChart", data, layout, {
+          displayModeBar: false,
+          responsive: true,
+        });
+
+        // Export CSV
+        const rows = [["label", "value"]];
+        if (data[0] && data[0].labels && data[0].values) {
+          data[0].labels.forEach((lab, i) =>
+            rows.push([lab, data[0].values[i]])
+          );
+        }
+        document.getElementById("exportRisk").onclick = () =>
+          downloadCSV("risk_mix.csv", rows);
+      })
+      .catch(() => setError("riskChart", "Failed to load chart"));
+  }
+
+  function loadAgeRisk() {
+    const q = currentFilters();
+    fetch(
+      `/api/age-risk?risk=${encodeURIComponent(q.risk)}&from=${
+        q.from || ""
+      }&to=${q.to || ""}`
+    )
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.statusText)))
+      .then((res) => {
+        unsetSkeleton("ageRiskChart");
+        if (!res || !res.data || !res.data.length) {
+          setError("ageRiskChart", "No data available");
+          return;
+        }
+        const traces = res.data.map((t) => ({
+          ...t,
+          mode: "markers",
+          type: "scatter",
+          hovertemplate: "Age: %{x}<br>Prob: %{y:.2f}<extra></extra>",
+        }));
+
+        // Optional trend line (simple LOWESS-ish by binning)
+        if (document.getElementById("toggleTrend").checked) {
+          const pts =
+            traces[0] && traces[0].x && traces[0].y ? traces[0] : null;
+          if (pts) {
+            const pairs = pts.x
+              .map((x, i) => ({ x: Number(x), y: Number(pts.y[i]) }))
+              .filter((p) => !isNaN(p.x) && !isNaN(p.y))
+              .sort((a, b) => a.x - b.x);
+            const bins = 10,
+              step = Math.ceil(pairs.length / bins);
+            const sx = [],
+              sy = [];
+            for (let i = 0; i < pairs.length; i += step) {
+              const chunk = pairs.slice(i, i + step);
+              sx.push(chunk.reduce((a, c) => a + c.x, 0) / chunk.length);
+              sy.push(chunk.reduce((a, c) => a + c.y, 0) / chunk.length);
+            }
+            traces.push({
+              x: sx,
+              y: sy,
+              mode: "lines",
+              name: "trend",
+              line: { dash: "solid" },
+              hoverinfo: "skip",
+            });
+          }
+        }
+
+        const layout = Object.assign(
+          {
+            margin: { t: 20, r: 20, b: 40, l: 40 },
+            xaxis: { title: "Age" },
+            yaxis: { title: "Risk Probability", rangemode: "tozero" },
+          },
+          res.layout || {}
+        );
+        Plotly.newPlot("ageRiskChart", traces, layout, {
+          displayModeBar: false,
+          responsive: true,
+        });
+      })
+      .catch(() => setError("ageRiskChart", "Failed to load chart"));
+  }
+
+  function loadTimeline() {
+    const q = currentFilters();
+    fetch(
+      `/api/predictions-timeline?window=${q.window}&risk=${encodeURIComponent(
+        q.risk
+      )}&from=${q.from || ""}&to=${q.to || ""}`
+    )
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.statusText)))
+      .then((res) => {
+        unsetSkeleton("timelineChart");
+        if (!res || !res.data || !res.data.length) {
+          setError("timelineChart", "No data available");
+          return;
+        }
+
+        // Expect stacked bars: High vs Low counts per day if backend provides two traces. Else render single trace.
+        const layout = Object.assign(
+          {
+            barmode: "stack",
+            margin: { t: 10, r: 20, b: 40, l: 40 },
+            xaxis: { title: "Date" },
+            yaxis: { title: "Predictions" },
+          },
+          res.layout || {}
+        );
+
+        Plotly.newPlot("timelineChart", res.data, layout, {
+          displayModeBar: false,
+          responsive: true,
+        });
+
+        // Export
+        const rows = [["date"]];
+        const traces = res.data; // assume x shares dates across traces
+        const labels = traces.map((t) => t.name || "count");
+        labels.forEach((l) => rows[0].push(l));
+        if (traces[0] && traces[0].x) {
+          traces[0].x.forEach((d, idx) => {
+            const row = [d];
+            traces.forEach((t) => row.push(t.y ? t.y[idx] : ""));
+            rows.push(row);
+          });
+        }
+        document.getElementById("exportTimeline").onclick = () =>
+          downloadCSV("predictions_timeline.csv", rows);
+      })
+      .catch(() => setError("timelineChart", "Failed to load chart"));
+  }
+
+  // Initial load
+  window.addEventListener("DOMContentLoaded", () => {
+    loadRisk();
+    loadAgeRisk();
+    loadTimeline();
+  });
+</script>
+
+<style>
+  /* A softer, modern look */
+  .kpi-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #6c757d;
+  }
+  .kpi-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  .kpi-unit {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-left: 0.25rem;
+  }
+  .kpi-sub {
+    font-size: 0.8rem;
+  }
+
+  .chart-box {
+    min-height: 340px;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.06)
+    );
+    min-height: 340px;
+    border-radius: 0.5rem;
+  }
+  .skeleton:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0)
+    );
+    animation: shimmer 1.4s infinite;
+  }
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Gradient button used elsewhere in app */
+  .btn-gradient {
+    background: linear-gradient(135deg, #7c3aed, #06b6d4);
+    color: #fff;
+    border: 0;
+  }
+  .btn-gradient:hover {
+    filter: brightness(0.95);
+    color: #fff;
+  }
+
+  /* Subtle badges using BS5 utilities but keep compatibility */
+  .bg-danger-subtle {
+    background: rgba(220, 53, 69, 0.12) !important;
+    color: #dc3545 !important;
+  }
+  .bg-success-subtle {
+    background: rgba(40, 167, 69, 0.12) !important;
+    color: #198754 !important;
+  }
+
+  /* Dark header inputs */
+  .input-group .form-control {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    border: 0;
+  }
+  .input-group .form-control:focus {
+    box-shadow: none;
+  }
+  .input-group-text {
+    border: 0;
+  }
+
+  /* Responsive refinements */
+  @media (max-width: 768px) {
+    .chart-box {
+      min-height: 280px;
+    }
+  }
+</style>
+{% endblock %}

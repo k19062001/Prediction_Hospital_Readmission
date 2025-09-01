@@ -1,0 +1,326 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}MedPredict AI{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Custom CSS with Neon/Glassmorphism Theme -->
+    <style>
+      :root {
+        /* Dark Theme (Default) */
+        --bg-color: #0d0c22;
+        --bg-gradient: radial-gradient(circle, rgba(13, 12, 34, 1) 0%, rgba(19, 16, 68, 1) 100%);
+        --text-color: #e0e0e0;
+        --text-muted-color: #8b8a9e;
+        --accent-color: #00f7ff;
+        --accent-glow: 0 0 10px #00f7ff, 0 0 20px #00f7ff, 0 0 30px #00aaff;
+        --secondary-accent-color: #ff00ff;
+        --secondary-glow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #d400ff;
+        --glass-bg: rgba(22, 21, 55, 0.4);
+        --glass-border: rgba(0, 247, 255, 0.2);
+        --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        --component-bg: #161537;
+      }
+
+      body.light-theme {
+        /* Light Theme */
+        --bg-color: #f0f2f5;
+        --bg-gradient: linear-gradient(135deg, #e6e9f0 0%, #eef1f5 100%);
+        --text-color: #1e293b;
+        --text-muted-color: #64748b;
+        --accent-color: #2563eb;
+        --accent-glow: 0 0 10px #2563eb, 0 0 20px #2563eb;
+        --secondary-accent-color: #d946ef;
+        --secondary-glow: 0 0 10px #d946ef, 0 0 20px #d946ef;
+        --glass-bg: rgba(255, 255, 255, 0.4);
+        --glass-border: rgba(37, 99, 235, 0.3);
+        --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        --component-bg: #ffffff;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        background-image: var(--bg-gradient);
+        min-height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text-color);
+        transition: background-color 0.5s ease, color 0.5s ease;
+      }
+
+      .navbar, .card, .modal-content {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        box-shadow: var(--card-shadow);
+        border-radius: 16px;
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px var(--glass-border);
+        border-color: var(--accent-color);
+      }
+      
+      .modal-content {
+          color: var(--text-color);
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        color: #fff !important;
+        text-shadow: var(--accent-glow);
+        transition: text-shadow 0.3s ease;
+      }
+      
+      body.light-theme .navbar-brand {
+          color: var(--accent-color) !important;
+          text-shadow: none;
+      }
+
+      .nav-link {
+        color: var(--text-color) !important;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
+        padding-bottom: 5px;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0px;
+        width: 0;
+        height: 2px;
+        background: var(--accent-color);
+        box-shadow: var(--accent-glow);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .btn-gradient {
+        background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent-color));
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 5px var(--accent-color);
+      }
+
+      .btn-gradient:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: var(--accent-glow);
+        color: white;
+      }
+
+      /* Theme Toggle Switch */
+      .theme-switch-wrapper {
+        display: flex;
+        align-items: center;
+      }
+      .theme-switch {
+        display: inline-block;
+        height: 24px;
+        position: relative;
+        width: 50px;
+        margin: 0 10px;
+      }
+      .theme-switch input {
+        display:none;
+      }
+      .slider {
+        background-color: var(--component-bg);
+        border: 1px solid var(--glass-border);
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: .4s;
+        border-radius: 34px;
+      }
+      .slider:before {
+        background-color: var(--accent-color);
+        bottom: 2px;
+        content: "";
+        height: 18px;
+        left: 3px;
+        position: absolute;
+        transition: .4s;
+        width: 18px;
+        border-radius: 50%;
+        box-shadow: var(--accent-glow);
+      }
+      input:checked + .slider {
+        background-color: var(--component-bg);
+      }
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+
+      .fade-in {
+        animation: fadeIn 0.8s ease-in-out;
+      }
+      
+      .text-white { color: var(--text-color) !important; }
+      .text-primary { color: var(--accent-color) !important; }
+      .text-danger { color: var(--secondary-accent-color) !important; }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+          <i class="fas fa-hospital-symbol me-2"></i> MedPredict AI
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+              <a class="nav-link {% if request.endpoint == 'home' %}active{% endif %}" href="{{ url_for('home') }}">Home</a>
+            </li>
+            {% if session.get('username') %}
+              {% if session.get('role') == 'doctor' %}
+                <li class="nav-item">
+                  <a class="nav-link {% if request.endpoint == 'predict' %}active{% endif %}" href="{{ url_for('predict') }}">Prediction</a>
+                </li>
+              {% endif %}
+              {% if session.get('role') == 'admin' %}
+                <li class="nav-item">
+                  <a class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}" href="{{ url_for('dashboard') }}">Dashboard</a>
+                </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link {% if request.endpoint == 'patients' %}active{% endif %}" href="{{ url_for('patients') }}">Patients</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.endpoint == 'followups' %}active{% endif %}" href="{{ url_for('followups') }}">Follow-ups</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link {% if request.endpoint == 'analytics' %}active{% endif %}" href="{{ url_for('analytics') }}">Analytics</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      👤 {{ session['username'] }} ({{ session['role'] }})
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item text-danger" href="{{ url_for('logout') }}">Logout</a></li>
+                  </ul>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('doctor_login') }}">Doctor Login</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('admin_login') }}">Admin Login</a>
+              </li>
+            {% endif %}
+            <li class="nav-item ms-3">
+                <div class="theme-switch-wrapper">
+                    <i class="fas fa-sun text-warning"></i>
+                    <label class="theme-switch" for="theme-checkbox">
+                        <input type="checkbox" id="theme-checkbox" />
+                        <div class="slider"></div>
+                    </label>
+                    <i class="fas fa-moon text-info"></i>
+                </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4 mb-5 fade-in">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="row mb-3">
+            <div class="col-12">
+            {% for category, message in messages %}
+            <div
+                class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show"
+            >
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Plotly JS Library -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+    
+    <!-- Theme Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeCheckbox = document.getElementById('theme-checkbox');
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme) {
+                document.body.classList.add(currentTheme);
+                if (currentTheme === 'light-theme') {
+                    themeCheckbox.checked = true;
+                }
+            }
+
+            themeCheckbox.addEventListener('change', () => {
+                if (themeCheckbox.checked) {
+                    document.body.classList.add('light-theme');
+                    localStorage.setItem('theme', 'light-theme');
+                } else {
+                    document.body.classList.remove('light-theme');
+                    localStorage.setItem('theme', 'dark-theme');
+                }
+            });
+        });
+    </script>
+    
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

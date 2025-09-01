@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Schedule Follow-Up{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="card shadow p-4">
+      <h3 class="text-center text-primary">📅 Schedule Follow-Up</h3>
+      <form method="POST">
+        <div class="mb-3">
+          <label class="form-label">Patient ID</label>
+          <input type="text" class="form-control" value="{{ patient_id }}" readonly>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Follow-Up Date</label>
+          <input type="date" class="form-control" name="followup_date">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Notes</label>
+          <textarea class="form-control" name="notes" rows="3" placeholder="Enter follow-up details..."></textarea>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success">Save Follow-Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

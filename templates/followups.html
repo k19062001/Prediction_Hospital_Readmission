@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Scheduled Follow-ups - MedPredict AI{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">📅 Scheduled Follow-ups</h2>
+
+  {% if records and records|length > 0 %}
+    <table class="table">
+  <thead>
+    <tr>
+      <th>Patient ID</th>
+      <th>Follow-up Date</th>
+      <th>Notes</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for record in records %}
+    <tr>
+      <td>{{ record.patient_id }}</td>
+      <td>{{ record.followup_date }}</td>
+      <td>{{ record.notes }}</td>
+      <td>{{ record.status }}</td>
+      <td>
+        {% if record.status == "Pending" %}
+          <a href="{{ url_for('update_followup', patient_id=record.patient_id, row_id=loop.index0, new_status='Completed') }}" 
+   class="btn btn-success btn-sm">Mark Completed</a>
+
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+    <div class="alert alert-info">No follow-ups scheduled yet.</div>
+  {% endif %}
+</div>
+{% endblock %}

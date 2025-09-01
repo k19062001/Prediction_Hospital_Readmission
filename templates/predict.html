@@ -1,0 +1,206 @@
+<!-- templates/predict.html -->
+{% extends "base.html" %}
+{% block title %}Risk Prediction - MedPredict AI{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+  <div class="col-12">
+    <h2 class="text-white mb-0">
+      <i class="fas fa-calculator me-2"></i>Patient Risk Prediction
+    </h2>
+    <p class="text-white opacity-75">
+      Enter patient data for AI-powered readmission risk assessment
+    </p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">
+          <i class="fas fa-user-md me-2"></i>Patient Information Form
+        </h5>
+      </div>
+      <div class="card-body">
+        
+        <!-- NEW: Patient Lookup Form -->
+        <form method="GET" action="{{ url_for('predict') }}" class="mb-4 p-3 bg-light border rounded">
+          <div class="row align-items-end">
+            <div class="col">
+              <label for="lookup_patient_id" class="form-label fw-bold">Lookup Existing Patient</label>
+              <input type="text" class="form-control" id="lookup_patient_id" name="patient_id" placeholder="Enter Patient ID to fetch data" value="{{ patient.patient_id if patient else '' }}" required>
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-secondary">
+                <i class="fas fa-search me-1"></i> Fetch Data
+              </button>
+            </div>
+          </div>
+        </form>
+        <hr>
+        <!-- End of Patient Lookup Form -->
+
+        <form method="POST" action="{{ url_for('predict') }}" id="prediction-form">
+          <div class="row">
+            <!-- Patient Details -->
+            <div class="col-12">
+              <h6 class="text-primary mb-3">
+                <i class="fas fa-user me-1"></i>Patient Details
+              </h6>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="patient_id" class="form-label">Patient ID *</label>
+              <!-- MODIFIED: Field is now readonly if data is loaded -->
+              <input type="text" class="form-control" id="patient_id" name="patient_id"
+                     value="{{ patient.patient_id if patient else '' }}" required {% if patient %}readonly{% endif %}>
+              {% if patient %}<div class="form-text">Patient ID is locked after fetching.</div>{% endif %}
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="age" class="form-label">Age *</label>
+              <input type="number" class="form-control" id="age" name="age"
+                     value="{{ patient.age if patient else '' }}" min="1" max="120" required />
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="gender" class="form-label">Gender *</label>
+              <select class="form-select" id="gender" name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male" {% if patient and patient.gender == 'Male' %}selected{% endif %}>Male</option>
+                <option value="Female" {% if patient and patient.gender == 'Female' %}selected{% endif %}>Female</option>
+                <option value="Other" {% if patient and patient.gender == 'Other' %}selected{% endif %}>Other</option>
+              </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="bmi" class="form-label">BMI *</label>
+              <input type="number" class="form-control" id="bmi" name="bmi"
+                     value="{{ patient.bmi if patient else '' }}" step="0.1" min="10" max="60" required />
+              <div class="form-text">Body Mass Index (kg/m²)</div>
+            </div>
+
+            <!-- Clinical Parameters -->
+            <div class="col-12 mt-3">
+              <hr />
+              <h6 class="text-primary mb-3">
+                <i class="fas fa-stethoscope me-1"></i>Clinical Parameters
+              </h6>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="blood_pressure" class="form-label">Blood Pressure *</label>
+              <input type="text" class="form-control" id="blood_pressure" name="blood_pressure"
+                     value="{{ patient.blood_pressure if patient else '' }}" placeholder="120/80" required />
+              <div class="form-text">Format: Systolic/Diastolic (e.g., 120/80)</div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="cholesterol" class="form-label">Cholesterol Level *</label>
+              <input type="number" class="form-control" id="cholesterol" name="cholesterol"
+                     value="{{ patient.cholesterol if patient else '' }}" step="0.1" min="50" max="500" required />
+              <div class="form-text">mg/dL</div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="diabetes" class="form-label">Diabetes *</label>
+              <select class="form-select" id="diabetes" name="diabetes" required>
+                <option value="">Select Option</option>
+                <option value="Yes" {% if patient and (patient.diabetes == 'Yes' or patient.diabetes == 1 or patient.diabetes == '1.0' or patient.diabetes == '1') %}selected{% endif %}>Yes</option>
+                <option value="No" {% if patient and (patient.diabetes == 'No' or patient.diabetes == 0 or patient.diabetes == '0.0' or patient.diabetes == '0') %}selected{% endif %}>No</option>
+              </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="hypertension" class="form-label">Hypertension *</label>
+              <select class="form-select" id="hypertension" name="hypertension" required>
+                <option value="">Select Option</option>
+                <option value="Yes" {% if patient and (patient.hypertension == 'Yes' or patient.hypertension == 1 or patient.hypertension == '1.0' or patient.hypertension == '1') %}selected{% endif %}>Yes</option>
+                <option value="No" {% if patient and (patient.hypertension == 'No' or patient.hypertension == 0 or patient.hypertension == '0.0' or patient.hypertension == '0') %}selected{% endif %}>No</option>
+              </select>
+            </div>
+
+            <!-- Hospital Stay -->
+            <div class="col-12 mt-3">
+              <hr />
+              <h6 class="text-primary mb-3">
+                <i class="fas fa-hospital me-1"></i>Hospital Stay Information
+              </h6>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="length_of_stay" class="form-label">Length of Stay *</label>
+              <input type="number" class="form-control" id="length_of_stay" name="length_of_stay"
+                     value="{{ patient.length_of_stay if patient else '' }}" min="1" max="100" required />
+              <div class="form-text">Days</div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="medication_count" class="form-label">Medication Count *</label>
+              <input type="number" class="form-control" id="medication_count" name="medication_count"
+                     value="{{ patient.medication_count if patient else '' }}" min="0" max="50" required />
+              <div class="form-text">Number of medications prescribed</div>
+            </div>
+
+            <div class="col-12 mb-3">
+              <label for="discharge_destination" class="form-label">Discharge Destination *</label>
+              <select class="form-select" id="discharge_destination" name="discharge_destination" required>
+                <option value="">Select Destination</option>
+                <option value="Home" {% if patient and patient.discharge_destination == 'Home' %}selected{% endif %}>Home</option>
+                <option value="Nursing_Facility" {% if patient and patient.discharge_destination == 'Nursing_Facility' %}selected{% endif %}>Nursing Facility</option>
+                <option value="Rehab" {% if patient and patient.discharge_destination == 'Rehab' %}selected{% endif %}>Rehabilitation Center</option>
+                <option value="Other" {% if patient and patient.discharge_destination == 'Other' %}selected{% endif %}>Other</option>
+              </select>
+            </div>
+
+            <!-- Doctor Info -->
+            <div class="col-12 mt-3">
+              <hr />
+              <h6 class="text-primary mb-3">
+                <i class="fas fa-user-md me-1"></i>Doctor Information
+              </h6>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="doctor_name" class="form-label">Doctor Name *</label>
+                <!-- MODIFIED: Pre-fills with logged-in doctor if no patient data exists -->
+                <input type="text" class="form-control" id="doctor_name" name="doctor_name"
+                       value="{{ patient.doctor_name if patient and patient.doctor_name else session.get('username', '') }}" required />
+            </div>
+            
+            <div class="col-md-6 mb-3">
+                <label for="doctor_email" class="form-label">Doctor Email</label>
+                <input type="email" class="form-control" id="doctor_email" name="doctor_email"
+                       value="{{ patient.doctor_email if patient and patient.doctor_email else '' }}" />
+                <div class="form-text">Optional - for email notifications</div>
+            </div>
+
+          </div>
+
+           <div class="row mt-4">
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-gradient btn-lg">
+                <span class="btn-text">
+                  <i class="fas fa-brain me-2"></i>Predict Risk
+                </span>
+                <span
+                  class="loading-spinner spinner-border spinner-border-sm me-2"
+                  style="display: none"
+                ></span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ... (rest of the file, including modal and scripts, is the same) ... -->
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // ... (no changes needed to the scripts block) ...
+</script>
+{% endblock %}

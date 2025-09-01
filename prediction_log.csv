@@ -1,0 +1,239 @@
+"timestamp","patient_id","doctor_name","doctor_email","age","gender","cholesterol","bmi","diabetes","hypertension","medication_count","length_of_stay","discharge_destination","systolic_bp","diastolic_bp","pulse_pressure","high_bp_flag","comorbidity_index","bmi_category","discharge_risk","meds_per_day","meds_per_comorbidity","probability","risk","override_applied","override_reasons","email_status","summary"
+"2025-08-27_17-55-02","P003","fghf","rithikaofficial24@gmail.com","55","Female","210.0","23.0","1","1","8","4","Home","152.0","85.0","67.0","1","2","0","0","1.6","2.666667","0.264568","Medium","0","","Skipped"," Patient P003 under Dr. fghf has a predicted readmission probability of 0.26 with risk level Medium. Age 55, BMI 23.0, cholesterol 210.0 and medications 8, length of stay 4 days . Consider scheduling follow-up and reviewing medication adherence ."
+"2025-08-27_18-08-38","1","chrisie","rithikaofficial24@gmail.com","87","Other","210.0","23.6","1","1","9","8","Nursing_Facility","160.0","86.0","74.0","1","2","0","1","1.0","3.0","0.128294","High","1","Age ≥ 85|Age ≥ 80 with diabetes|Age ≥ 60 with multiple comorbidities|Prolonged stay with diabetes|Age ≥ 70 with diabetes|Discharge to nursing/rehab facility","Sent"," Patient 1 under Dr. chrisie has a predicted readmission probability of 0.13 with risk level High . Immediate post-discharge planning and close monitoring are strongly recommended ."
+"2025-08-27_18-45-26","101","Mr.Green","rithikaofficial24@gmail.com","30","Male","160.0","22.0","0","0","1","2","Home","118.0","76.0","42.0","0","0","0","0","0.333333","1.0","0.22484","Low","0","","Skipped"," Dr. Green has a predicted readmission probability of 0.22 with risk level Low . Routine follow-up may suffice, but continue monitoring for changes ."
+"2025-08-27_18-49-43","101","Mr.Green","rithikaofficial24@gmail.com","30","Male","160.0","22.0","0","0","1","2","Home","118.0","76.0","42.0","0","0","0","0","0.333333","1.0","0.22484","Low","0","","Skipped"," Dr. Green has a predicted readmission probability of 0.22 with risk level Low . Routine follow-up may suffice, but continue monitoring for changes ."
+"2025-08-27_18-57-36","101","Mr.Green","rithikaofficial24@gmail.com","30","Male","160.0","22.0","0","0","1","2","Home","118.0","76.0","42.0","0","0","0","0","0.333333","1.0","0.22484","Low","0","","Skipped"," Dr. Green has a predicted readmission probability of 0.22 with risk level Low . Routine follow-up may suffice, but continue monitoring for changes ."
+"2025-08-27_19-00-38","101","Mr.Green","rithikaofficial24@gmail.com","30","Male","160.0","22.0","0","0","1","2","Home","118.0","76.0","42.0","0","0","0","0","0.333333","1.0","0.22484","Low","0","","Skipped"," Dr. Green has a predicted readmission probability of 0.22 with risk level Low . Routine follow-up may suffice, but continue monitoring for changes ."
+"2025-08-27_19-09-05","202","amber","rithikaofficial24@gmail.com","55","Female","210.0","28.0","1","0","3","4","Home","135.0","85.0","50.0","0","1","2","0","0.6","1.5","0.216674","Low","0","","Skipped"," Patient 202 under Dr. amber has a predicted readmission probability of 0.22 with risk level Low . Routine follow-up may suffice, but continue monitoring for changes ."
+"2025-08-27_19-47-42","404","Dr.Override","rithikaofficial24@gmail.com","88","Female","180.0","25.0","1","1","5","10","Nursing_Facility","122.0","70.0","52.0","0","2","2","1","0.454545","1.666667","0.206432","High","1","Age ≥ 85|Age ≥ 80 with diabetes|Age ≥ 60 with multiple comorbidities|Prolonged stay with diabetes|Age ≥ 70 with diabetes|Discharge to nursing/rehab facility","Sent"," Patient 404 has a predicted readmission probability of 0.21 with risk level High . Immediate post-discharge planning and close monitoring are strongly recommended ."
+"2025-08-27_20-50-30","501","dr.Iyer","rithikaofficial24@gmail.com","40","Male","160.0","22.5","0","0","1","2","Home","118.0","76.0","42.0","0","0","0","0","0.333333","1.0","0.256799","Low","0","","Skipped"," Patient 501 under Dr. Dr. Iyer has a predicted readmission probability of 0.26 with risk level Low . Routine follow-up may suffice, but continue monitoring for changes ."
+"2025-08-27_20-52-53","502","Dr.Rao","rithikaofficial24@gmail.com","55","Female","175.0","27.5","1","0","3","3","Home","135.0","88.0","47.0","0","1","2","0","0.75","1.5","0.249462","Low","0","","Skipped"," Patient 502 under Dr.Rao has a predicted readmission probability of 0.25 with risk level Low . Routine follow-up may suffice, but continue monitoring for changes ."
+"2025-08-27_20-55-04","503","sharma","rithikaofficial24@gmail.com","72","Male","210.0","30.5","1","1","5","6","Nursing_Facility","150.0","95.0","55.0","1","2","1","1","0.714286","1.666667","0.591649","High","1","Multiple comorbidities","Sent"," Patient 503 under Dr. sharma has a predicted readmission probability of 0.59 with risk level High . Immediate post-discharge planning and close monitoring are strongly recommended ."
+"2025-08-27_21-23-12","P001","Anil Kumar","rithikaofficial24@gmail.com","52","Male","210.0","27.5","0","1","3","4","Home","135.0","85.0","50.0","0","1","2","0","0.6","1.5","27.759132","Low","0","","Skipped"," Patient P001 under Dr. Anil Kumar has a predicted readmission probability of 0.23 with risk level Low . Routine follow-up may suffice, but continue monitoring for changes ."
+"2025-08-27_21-25-48","P001","Anil Kumar","rithikaofficial24@gmail.com","52","Male","210.0","27.5","0","1","3","4","Home","135.0","85.0","50.0","0","1","2","0","0.6","1.5","37.759132","Medium","0","","Skipped"," Patient P001 under Dr. Anil Kumar has a predicted readmission probability of 0.23 with risk level Medium . Age 52, BMI 27.5, cholesterol 210.0, medications 3, length of stay 4 days, diabetes No, hypertension Yes, pulse"
+"2025-08-27_21-41-06","T001","Dr.Ramesh","rithikaofficial24@gmail.com","35","Female","160.0","22.0","0","0","1","2","Home","115.0","75.0","40.0","0","0","0","0","0.333333","1.0","35.716836","Medium","0","","Skipped"," Dr.Ramesh has a predicted readmission probability of 0.21 with risk level Medium. Age 35, BMI 22.0, cholesterol 160.0 and medications 1, length of stay 2 days . Consider scheduling follow-up and reviewing medication adherence ."
+"2025-08-27_21-43-46","T001","Dr.Ramesh","rithikaofficial24@gmail.com","35","Female","160.0","22.0","0","0","1","2","Home","115.0","75.0","40.0","0","0","0","0","0.333333","1.0","30.716836","Medium","0","","Skipped"," Dr.Ramesh has a predicted readmission probability of 0.21 with risk level Medium. Age 35, BMI 22.0, cholesterol 160.0 and medications 1, length of stay 2 days . Consider scheduling follow-up and reviewing medication adherence ."
+"2025-08-27_21-44-38","T003","bob","rithad117@rmkcet.ac.in","40","Female","160.0","22.0","0","0","1","2","Home","115.0","75.0","40.0","0","0","0","0","0.333333","1.0","30.716836","Medium","0","","Skipped"," Patient T003 under Dr. bob has a predicted readmission probability of 0.21 with risk level Medium. Age 40, BMI 22.0, cholesterol 160.0 and medications 1, length of stay 2 days . Consider scheduling follow-up and reviewing medication adherence ."
+"2025-08-27_21-46-22","1","Alice","rithikaofficial24@gmail.com","32","Male","140.0","22.0","0","0","2","1","Home","115.0","72.0","43.0","0","0","0","0","1.0","2.0","22.688945","Low","0","","Skipped"," Patient 1 under Dr. Alice has a predicted readmission probability of 0.13 with risk level Low . Routine follow-up may suffice, but continue monitoring for changes ."
+"2025-08-31_16-40-51","56","v","","67","Male","56.0","25.0","1","0","2","6","Nursing_Facility","130.0","56.0","74.0","0","1","2","1","0.285714","1.0","49.670402","Medium","1","Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Skipped","Summary: Patient ID 56, a 67-year-old with **diabetes**, has a medium risk of 30-day readmission, primarily due to their **age**, **medication count**, and relatively long **length of stay**.
+Measures:
+* Optimize medication regimen to minimize potential interactions and side effects related to **medication count**.
+* Provide comprehensive diabetes management education to patient and family to improve disease control and reduce **diabetes**-related complications.
+* Arrange for post-discharge follow-up within 7-10 days to monitor patient's condition and adjust treatment plan as needed, considering their **age** and **length of stay**.
+* Consider referring patient to a transitional care program to address potential gaps in care and support **discharge destination** planning."
+"2025-08-31_16-51-30","78","v","","67","Female","56.0","25.0","1","1","2","6","Rehab","130.0","56.0","74.0","0","2","2","2","0.285714","0.666667","50.971696","Medium","1","Multiple comorbidities|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Skipped","Summary: The patient's **age**, **diabetes**, **hypertension**, and **length of stay** are the primary risk factors contributing to a medium risk of 30-day readmission.
+Measures:
+* Optimize medication management, considering the patient's **medication count** and potential polypharmacy risks.
+* Provide comprehensive discharge planning and education, addressing **diabetes** and **hypertension** management.
+* Arrange for post-discharge follow-up and monitoring to mitigate risks associated with **length of stay** and underlying comorbidities.
+* Consider referring the patient to a transitional care program to support **age**-related needs and reduce readmission risk."
+"2025-08-31_16-53-36","56","v","","67","Male","56.0","45.0","1","0","2","6","Nursing_Facility","130.0","56.0","74.0","0","1","1","1","0.285714","1.0","39.142214","Medium","1","Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Skipped","Summary: The patient's **age**, **high BMI**, **diabetes**, and **length of stay** are the primary risk factors contributing to a medium risk of 30-day readmission.
+Measures:
+* Optimize **medication_count** and regimen to improve management of **diabetes** and related conditions.
+* Implement a weight management plan to reduce **high BMI** and associated health risks.
+* Provide patient education on self-care and **disease management** to empower the patient in monitoring and controlling their condition after discharge."
+"2025-08-31_16-55-37","89","v","","67","Male","399.0","56.0","1","1","2","6","Rehab","240.0","23.0","217.0","1","2","1","2","0.285714","0.666667","38.92509","Medium","1","Multiple comorbidities|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Skipped","Summary: Patient ID 89, a 67-year-old with **diabetes** and **hypertension**, has a medium risk of 30-day readmission due to multiple factors including **age**, **high cholesterol**, and **length of stay**.
+Measures:
+* Optimize **medication_count** and monitor for potential interactions or simplifications to reduce polypharmacy risks.
+* Implement a post-discharge **follow-up** plan to closely monitor the patient's condition and adjust treatments as necessary.
+* Provide patient education on **dietary management** and **lifestyle modifications** to address **high cholesterol** and **BMI**.
+* Consider a **transition care** program to support the patient's safe transition back home and reduce readmission risk."
+"2025-08-31_16-57-30","89","v","","67","Male","399.0","56.0","1","1","2","6","Rehab","240.0","23.0","217.0","1","2","1","2","0.285714","0.666667","38.92509","Medium","1","Multiple comorbidities|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Skipped","Summary: Patient ID 89, a 67-year-old with **diabetes** and **hypertension**, has a medium risk of 30-day readmission due to multiple factors including **age**, **high bmi**, **elevated cholesterol**, and **prolonged length of stay**.
+Measures:
+* Optimize **medication_count** and regimen to better manage **diabetes** and **hypertension**.
+* Provide patient education on **dietary modifications** to address **high bmi** and **elevated cholesterol**.
+* Consider a **post-discharge follow-up** appointment to monitor patient's condition and adjust treatment plan as necessary."
+"2025-08-31_17-00-54","13","v","","61","Female","216.0","29.3","1","1","1","10","Home","116.0","99.0","17.0","1","2","2","0","0.090909","0.333333","16.0051","Low","0","","Doctor:Skipped; Admin:Skipped","Summary: Patient ID 13, a 61-year-old with **diabetes** and **hypertension**, has a relatively low risk of readmission, but their **age**, **bmi**, and **length_of_stay** warrant careful consideration to prevent potential complications.
+Measures:
+* Optimize **medication_count** and regimen to ensure adequate management of **diabetes** and **hypertension**.
+* Provide patient education on lifestyle modifications to reduce **bmi** and improve overall health.
+* Consider extended follow-up or monitoring after discharge to address potential concerns related to **length_of_stay** and underlying conditions.
+* Ensure a comprehensive discharge plan, including clear instructions and access to care, to mitigate risks associated with **age** and comorbidities."
+"2025-08-31_17-03-14","89","v","","61","Female","216.0","29.3","1","1","10","10","Rehab","116.0","99.0","17.0","1","2","2","2","0.909091","3.333333","39.064656","Medium","1","Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Skipped","Summary: Patient ID 89, a 61-year-old with **diabetes** and **hypertension**, has a Medium risk of 30-day readmission, primarily due to their **age**, **medication count**, and **length of stay**.
+Measures:
+* Optimize **medication count** by reviewing and potentially consolidating or simplifying the patient's medication regimen to reduce complexity and improve adherence.
+* Implement a comprehensive **discharge plan** that includes close follow-up with a primary care physician and specialists to monitor **diabetes** and **hypertension** management.
+* Provide patient education on **diet** and **lifestyle modifications** to address **bmi** and reduce the risk of readmission.
+* Consider a **post-discharge transition program** to support the patient's transition back home and reduce the risk of readmission."
+"2025-08-31_17-11-57","56","v","","67","Male","56.0","25.0","1","1","2","6","Rehab","130.0","56.0","74.0","0","2","2","2","0.285714","0.666667","51.453683","High","1","Multiple comorbidities|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Sent","Summary: The patient's high risk of 30-day readmission is primarily driven by **age**, **comorbidity** (**diabetes** and **hypertension**), and a relatively long **length of stay**, which collectively contribute to an increased likelihood of complications or incomplete recovery.
+Measures:
+* Optimize medication management, reviewing the patient's current **medication_count** to ensure minimal polypharmacy and potential interactions.
+* Implement a tailored discharge plan, considering the patient's **discharge destination** and ensuring access to necessary follow-up care and support.
+* Provide patient education on **diabetes** and **hypertension** self-management, emphasizing the importance of adherence to treatment plans and lifestyle modifications.
+* Arrange for early follow-up appointments to monitor the patient's condition closely after discharge, addressing any potential issues promptly."
+"2025-08-31_21-06-32","89","r","","78","Female","216.0","56.0","1","1","10","10","Nursing_Facility","116.0","93.0","23.0","1","2","0","0","0.909091","3.333333","36.410912","Medium","1","Elderly with diabetes|Multiple comorbidities|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Skipped","Summary: The patient's **age**, **high BMI**, **diabetes**, and **hypertension**, combined with a **length of stay** of 10 days and a **high medication count**, contribute to a medium risk of 30-day readmission.
+Measures:
+* Optimize **medication count** by reviewing and potentially consolidating or simplifying the patient's medication regimen to reduce complexity and potential for adverse interactions.
+* Implement a post-discharge monitoring plan to manage **diabetes** and **hypertension**, including regular blood glucose and blood pressure checks.
+* Provide patient education on **healthy weight management** to address the **high BMI** and its associated risks.
+* Consider a **post-acute care** plan to support the patient's transition back home, addressing potential gaps in care and reducing the risk of readmission."
+"2025-08-31_21-19-07","89","r","","78","Female","216.0","56.0","1","1","10","10","Rehab","116.0","93.0","23.0","1","2","0","0","0.909091","3.333333","36.410912","Medium","1","Elderly with diabetes|Multiple comorbidities|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Skipped","Summary: Patient ID 89, a **78**-year-old with **diabetes** and **hypertension**, has a medium risk of 30-day readmission due to multiple factors including **length of stay** and high **medication count**.
+Measures:
+* Optimize **medication count** by reviewing and potentially reducing the number of medications to minimize polypharmacy risks.
+* Implement a comprehensive **discharge plan** to ensure a smooth transition to home or a post!acute care facility, addressing potential gaps in care.
+* Provide patient education on **diabetes** and **hypertension** management to improve self-care and adherence to treatment plans.
+* Consider a **post-discharge follow-up** appointment to monitor the patient's condition and adjust the treatment plan as needed."
+"2025-08-31_21-19-58","89","r","","78","Female","289.0","56.0","1","1","10","10","Rehab","100.0","100.0","0.0","1","2","0","0","0.909091","3.333333","33.995519","Medium","1","Elderly with diabetes|Multiple comorbidities|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Skipped","Summary: Patient ID 89, a **78**-year-old with **diabetes** and **hypertension**, has a medium risk of 30-day readmission due to multiple factors including **high medication count** and prolonged **length of stay**.
+Measures:
+* Optimize **medication count** by reviewing and potentially consolidating or deprescribing unnecessary medications to reduce polypharmacy risks.
+* Implement a comprehensive **discharge plan** that includes close follow-up appointments and clear patient education on managing **diabetes** and **hypertension**.
+* Consider a **post-acute care** facility or home health services to support the patient's transition and reduce the risk of readmission associated with prolonged **length of stay**.
+* Ensure the patient has a clear understanding of their condition and treatment plan to improve adherence and self-management of **comorbidities**."
+"2025-08-31_21-22-43","89","r","","78","Female","320.0","56.0","1","1","10","10","Home","116.0","93.0","23.0","1","2","0","0","0.909091","3.333333","41.26977","High","1","Elderly with diabetes|Multiple comorbidities|Severe obesity with diabetes","Doctor:Skipped; Admin:Sent","Summary: Patient ID 89, a **78**-year-old with **diabetes** and **hypertension**, has a high risk of 30-day readmission due to multiple factors including **high medication count**, **elevated cholesterol**, and prolonged **length of stay**.
+Measures:
+* Optimize medication regimen to reduce **medication count** and potential adverse interactions.
+* Implement a comprehensive discharge plan with close follow-up to monitor **diabetes** and **hypertension** management.
+* Consider a post-discharge **home health** or rehabilitation service to support the patient's transition and reduce readmission risk."
+"2025-08-31_21-55-08","89","r","","78","Female","320.0","56.0","1","1","10","10","Rehab","116.0","93.0","23.0","1","2","0","0","0.909091","3.333333","41.26977","High","1","Elderly with diabetes|Multiple comorbidities|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Sent","Summary: Patient ID 89, a **78**-year-old with **diabetes** and **hypertension**, has a high risk of 30-day readmission due to multiple factors including **high medication count**, **elevated cholesterol**, and prolonged **length of stay**.
+Measures:
+* Optimize medication regimen to reduce **medication count** and potential adverse interactions.
+* Implement a comprehensive discharge plan with close follow-up to monitor **diabetes** and **hypertension** management.
+* Consider a post-discharge **rehabilitation** or **home care** program to support the patient's transition and reduce readmission risk.
+* Educate the patient and caregivers on **cholesterol** management and the importance of adherence to the prescribed treatment plan."
+"2025-08-31_22-57-37","89","r","","78","Female","320.0","56.0","1","1","10","10","Rehab","116.0","93.0","23.0","1","2","0","0","0.909091","3.333333","41.26977","High","1","Elderly with diabetes|Multiple comorbidities|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Sent","Summary: Patient ID 89, a **78**-year-old with **diabetes** and **hypertension**, has a high risk of 30-day readmission due to multiple factors including **high medication count**, **elevated cholesterol**, and prolonged **length of stay**.
+Measures:
+* Optimize **medication count** by reviewing and potentially reducing the number of medications to minimize polypharmacy risks.
+* Implement a strict **cholesterol** management plan to reduce cardiovascular risk.
+* Develop a comprehensive post-discharge plan to address **diabetes** and **hypertension** management, including patient education and follow-up appointments.
+* Consider a transitional care program to support the patient after discharge, given the prolonged **length of stay** and **age**."
+"2025-09-01_00-29-59","87","v","","56","Female","216.0","29.5","1","1","10","10","Home","140.0","50.0","90.0","0","2","0","0","0.909091","3.333333","14.832524","Low","0","","Doctor:Skipped; Admin:Skipped","Summary: The patient's main risk factors for 30-day readmission include **diabetes**, **hypertension**, and a **length of stay** of 10 days, which are mitigated by a relatively low predicted readmission probability of 14.83%.
+Measures:
+* Optimize **medication_count** of 10 to minimize potential drug interactions and simplify the regimen.
+* Implement a post-discharge monitoring plan to manage **diabetes** and **hypertension** effectively.
+* Provide patient education on **cholesterol** management and lifestyle modifications to reduce cardiovascular risk."
+"2025-09-01_00-47-43","87","v","","56","Female","216.0","29.5","1","1","10","10","Home","140.0","50.0","90.0","0","2","0","0","0.909091","3.333333","14.832524","Low","0","","Doctor:Skipped; Admin:Skipped","Summary: The patient's primary risk factors for readmission include **diabetes**, **hypertension**, and a high **medication_count**, which may be exacerbated by their **age** and **length_of_stay**.
+Measures:
+* Optimize **medication_count** by reviewing and potentially consolidating or simplifying the patient's medication regimen to improve adherence.
+* Implement a comprehensive **diabetes** and **hypertension** management plan, including patient education on self-monitoring and lifestyle modifications.
+* Consider extending **length_of_stay** or arranging for post-discharge support to ensure the patient's condition is stable before discharge."
+"2025-09-01_01-03-35","87","v","","56","Female","216.0","29.5","1","1","10","10","Home","140.0","50.0","90.0","0","2","0","0","0.909091","3.333333","14.832524","Low","0","","Doctor:Skipped; Admin:Skipped","Summary: The patient's primary risk factors for readmission include **diabetes**, **hypertension**, and a high **medication_count**, which may be exacerbated by their **age** and **length_of_stay**.
+Measures:
+* Optimize **medication_count** by reviewing and potentially simplifying the patient's medication regimen to improve adherence.
+* Implement a comprehensive **diabetes** and **hypertension** management plan, including patient education on self-monitoring and lifestyle modifications.
+* Ensure a smooth transition of care by coordinating with the patient's primary care physician and scheduling a follow-up appointment shortly after discharge to monitor their condition and adjust the treatment plan as needed."
+"2025-09-01_01-04-18","87","v","","56","Female","216.0","29.5","1","1","10","10","Home","140.0","50.0","90.0","0","2","0","0","0.909091","3.333333","14.832524","Low","0","","Doctor:Skipped; Admin:Skipped","Summary: The patient's primary risk factors for readmission include **diabetes**, **hypertension**, and a high **medication_count**, which are compounded by their **age** and **length_of_stay**.
+Measures:
+* Optimize **medication_count** by reviewing and potentially reducing the number of medications to minimize polypharmacy risks.
+* Implement rigorous monitoring and management of **diabetes** and **hypertension** through lifestyle adjustments and medication adherence.
+* Consider extended support or follow-up appointments to address potential complications arising from **length_of_stay** and comorbid conditions."
+"2025-09-01_01-16-44","78","k","","78","Female","289.0","30.3","1","1","10","10","Home","140.0","67.0","73.0","0","2","0","0","0.909091","3.333333","43.624273","High","1","Elderly with diabetes|Multiple comorbidities","Doctor:Skipped; Admin:Sent","Summary: The patient's high risk of 30-day readmission is primarily driven by **age**, **comorbidity** (**diabetes** and **hypertension**), and a prolonged **length of stay**, which are compounded by a high **medication count** and elevated **cholesterol** levels.
+Measures:
+* Optimize **medication** regimen to minimize potential interactions and simplify management.
+* Implement a comprehensive **discharge planning** process to ensure a smooth transition to post-acute care.
+* Provide patient education on **diabetes** and **hypertension** management to improve self-care and adherence to treatment plans.
+* Consider a **post-discharge follow-up** appointment to monitor the patient's condition and address any emerging concerns."
+"2025-09-01_01-38-55","67","k","","45","Female","289.0","35.5","1","1","10","10","Home","140.0","67.0","73.0","0","2","0","0","0.909091","3.333333","41.458077","High","1","Severe obesity with diabetes","Doctor:Skipped; Admin:Sent","Summary: Patient ID 67 is at high risk of 30-day readmission due to **diabetes**, **hypertension**, **high bmi**, and **extended length of stay**, which collectively contribute to the elevated risk.
+Measures:
+* Optimize **medication_count** and regimen to improve management of **diabetes** and **hypertension**.
+* Implement a weight management plan to reduce **bmi** and associated health risks.
+* Ensure a comprehensive discharge plan, including close follow-up and monitoring of **cholesterol** levels and overall health status."
+"2025-09-01_02-34-39","56","s","","78","Female","340.0","29.1","1","1","19","10","Home","110.0","98.0","12.0","1","2","0","0","1.727273","6.333333","40.548591","High","1","Elderly with diabetes|Multiple comorbidities","Doctor:Skipped; Admin:Failed: name 'TA_JUSTIFY' is not defined","Summary: Patient ID 56, a **78**-year-old with **diabetes** and **hypertension**, has a high risk of 30-day readmission due to multiple factors including **medication count** of 19, **length of stay** of 10 days, and elevated **cholesterol** levels.
+Measures:
+* Optimize **medication** regimen to minimize potential adverse interactions and simplify management.
+* Implement a comprehensive **discharge planning** process to ensure a smooth transition to post-acute care.
+* Provide patient education on **diabetes** and **hypertension** management to improve self-care and adherence to treatment plans.
+* Consider a **post-discharge follow-up** appointment to monitor the patient's condition and address any concerns or issues promptly."
+"2025-09-01_02-35-48","56","s","","78","Female","340.0","29.1","1","1","19","10","Home","110.0","98.0","12.0","1","2","0","0","1.727273","6.333333","40.548591","High","1","Elderly with diabetes|Multiple comorbidities","Doctor:Skipped; Admin:Failed: name 'TA_JUSTIFY' is not defined","Summary: Patient ID 56, a **78**-year-old with **diabetes** and **hypertension**, has a high risk of 30-day readmission due to multiple factors including **medication count** of 19, **length of stay** of 10 days, and elevated **cholesterol** levels.
+Measures:
+* Optimize **medication** regimen to minimize potential drug interactions and simplify the treatment plan.
+* Implement a comprehensive **discharge planning** process to ensure a smooth transition to post-acute care.
+* Provide patient education on **disease management** and adherence to treatment plans for **diabetes** and **hypertension**.
+* Consider a **post-discharge follow-up** appointment to monitor the patient's condition and adjust the treatment plan as needed."
+"2025-09-01_02-47-15","52","t","","67","Female","340.0","23.7","1","1","19","10","Home","140.0","93.0","47.0","1","2","0","0","1.727273","6.333333","44.091345","High","1","Multiple comorbidities","Doctor:Skipped; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: Patient ID 52 is at high risk of 30-day readmission due to advanced **age**, multiple **comorbidities** (including **diabetes** and **hypertension**), prolonged **length of stay**, and complex medication regimen (**medication_count** of 19).
+Measures:
+* Optimize **medication** management and simplify regimen to improve adherence.
+* Implement enhanced **discharge planning** and coordination with primary care to address **comorbidities**.
+* Provide patient education on **diabetes** and **hypertension** self-management to reduce risk of complications.
+* Consider post-discharge **home health** services to monitor patient condition and prevent readmission."
+"2025-09-01_02-49-40","52","t","","67","Female","340.0","23.7","1","1","19","10","Home","140.0","93.0","47.0","1","2","0","0","1.727273","6.333333","44.091345","High","1","Multiple comorbidities","Doctor:Skipped; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: Patient ID 52 is at high risk of 30-day readmission due to **age**, **comorbidity** (**diabetes** and **hypertension**), **length of stay**, and high **medication_count**, which collectively contribute to the elevated risk.
+Measures:
+* Optimize **medication_count** by reviewing and potentially reducing the number of medications to minimize polypharmacy risks.
+* Implement a comprehensive **discharge plan** to ensure a smooth transition to post-acute care, addressing **diabetes** and **hypertension** management.
+* Provide patient education on **hypertension** and **diabetes** self-management to improve adherence to treatment plans and reduce readmission risk.
+* Consider a **post-discharge follow-up** appointment to monitor the patient's condition and adjust the treatment plan as needed."
+"2025-09-01_02-55-41","52","t","","67","Female","340.0","23.7","1","1","19","10","Home","140.0","93.0","47.0","1","2","0","0","1.727273","6.333333","44.091345","High","1","Multiple comorbidities","Doctor:Skipped; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: Patient ID 52 is at high risk of 30-day readmission due to **age**, **comorbidity** (**diabetes** and **hypertension**), **length of stay**, and complex medication regimen (**medication_count** of 19).
+Measures:
+* Optimize **medication_count** and simplify regimen to improve adherence and reduce potential drug interactions.
+* Implement close monitoring and follow-up plans for **diabetes** and **hypertension** management post-discharge.
+* Consider extending **length of stay** for additional stabilization and education on self-management of **comorbidities**.
+* Arrange for post-discharge support and coordination of care to address potential social determinants of health that may impact readmission risk."
+"2025-09-01_03-00-55","52","t","","67","Female","340.0","23.7","1","1","19","10","Home","140.0","93.0","47.0","1","2","0","0","1.727273","6.333333","44.091345","High","1","Multiple comorbidities","Doctor:Skipped; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: Patient ID 52 is at high risk of 30-day readmission due to **age**, **comorbidity** (**diabetes** and **hypertension**), **length of stay**, and high **medication_count**.
+Measures:
+* Optimize **medication_count** through thorough review and potential simplification of the medication regimen to improve adherence.
+* Implement enhanced monitoring and management of **diabetes** and **hypertension** through patient education and follow-up appointments.
+* Consider extending **length of stay** for further stabilization or arranging for post-discharge support to ensure a smooth transition.
+* Arrange for close follow-up with a primary care physician or a specialist to address potential issues related to **age** and **comorbidity** promptly."
+"2025-09-01_03-04-35","52","t","","67","Female","340.0","23.7","1","1","19","10","Home","140.0","93.0","47.0","1","2","0","0","1.727273","6.333333","44.091345","High","1","Multiple comorbidities","Doctor:Skipped; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: Patient ID 52 is at high risk of 30-day readmission due to **age**, **diabetes**, **hypertension**, and a prolonged **length of stay**, compounded by a high **medication count** and elevated **cholesterol** levels.
+Measures:
+. Optimize **medication count** through thorough review and potential simplification to improve adherence and reduce potential drug interactions.
+. Implement rigorous monitoring and management of **diabetes** and **hypertension** through patient education and follow-up appointments.
+. Consider extended support or rehabilitation services after discharge, especially given the patient's **age** and prolonged **length of stay**, to ensure a smooth transition and reduce readmission risk.
+. Arrange for close follow-up with a primary care physician or cardiologist to address the elevated **cholesterol** levels and associated cardiovascular risks."
+"2025-09-01_03-06-31","52","t","","67","Female","340.0","23.7","1","1","19","10","Home","140.0","93.0","47.0","1","2","0","0","1.727273","6.333333","44.091345","High","1","Multiple comorbidities","Doctor:Skipped; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: The patient's high risk of 30-day readmission is primarily driven by advanced age, multiple comorbidities including diabetes and hypertension, prolonged length of stay, and complex medication regimen.
+Measures:
+. Optimize medication management by simplifying the regimen and ensuring adherence to the 19 prescribed medications.
+. Implement a comprehensive discharge plan with close follow-up to monitor the patient's condition and adjust treatment as needed.
+. Provide patient education on managing diabetes and hypertension, including lifestyle modifications and symptom recognition.
+. Consider a post-discharge transition program to support the patient's recovery and reduce readmission risk."
+"2025-09-01_11-10-47","1","daniel","rithikagopinath45@gmail.com","89","Female","240.0","34.0","1","1","4","9","Rehab","135.0","85.0","50.0","0","2","1","2","0.4","1.333333","53.512312","High","1","Age ≥ 85|Elderly with diabetes|Multiple comorbidities|Discharge to nursing/rehab facility","Doctor:Email disabled: set EMAIL_USER and EMAIL_PASS in .env; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: The patient's high risk of 30-day readmission is primarily driven by advanced age, high bmi, multiple comorbidities including diabetes and hypertension, and a prolonged length of stay.
+Measures:
+. Optimize medication regimen to minimize potential interactions and side effects given the patient's high medication count and comorbidities.
+. Implement a post-discharge monitoring plan to closely track the patient's condition, particularly focusing on blood pressure and glucose control.
+. Arrange for a home health care service or a transitional care program to support the patient after discharge, addressing potential issues related to the patient's age and prolonged length of stay.
+. Provide patient and family education on disease management, medication adherence, and recognition of early signs of complications to facilitate timely intervention."
+"2025-09-01_16-18-24","3","charles","","89","Other","153.0","30.3","0","1","1","1","Home","135.0","78.0","57.0","0","1","1","0","0.5","0.5","44.620842","High","1","Age ≥ 85","Doctor:Skipped; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: The patient's high risk of 30-day readmission is primarily driven by advanced age, elevated bmi, and presence of hypertension, alongside a relatively short length of stay.
+Measures:
+. Ensure thorough medication reconciliation and education for the patient's single prescribed medication to prevent potential misuse or non-adherence.
+. Arrange for close follow-up appointments to monitor the patient's condition, particularly their hypertension management.
+. Consider referring the patient to a nutrition counseling service to address their elevated bmi through dietary adjustments.
+. Organize post-discharge support services, such as home health care, to assist the patient with daily activities and reduce the risk of readmission."
+"2025-09-01_16-51-23","2","doctor","","46","Female","292.0","36.3","0","0","4","3","Nursing_Facility","120.0","92.0","28.0","1","0","1","1","1.0","4.0","41.980332","High","1","Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: The patient's high risk of 30-day readmission is primarily driven by their elevated <u>bmi</u>, high <u>cholesterol</u> levels, and multiple <u>medication_count</u>, which may complicate their post-discharge management.
+Measures:
+. Optimize the patient's medication regimen to minimize potential interactions and simplify their treatment plan, considering their high <u>medication_count</u>.
+. Provide the patient with dietary counseling and education on weight management to address their elevated <u>bmi</u>.
+. Consider referring the patient to a lipid management clinic to help lower their high <u>cholesterol</u> levels.
+. Ensure a thorough post-discharge follow-up plan is in place, including close monitoring of the patient's condition and adjustment of their treatment plan as needed."
+"2025-09-01_17-23-00","10","doctor","","89","Male","186.0","38.0","1","1","3","9","Rehab","142.0","72.0","70.0","1","2","1","2","0.3","1.0","51.527674","High","1","Age ≥ 85|Elderly with diabetes|Multiple comorbidities|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: The patient's high risk of 30-day readmission is primarily driven by advanced age, high bmi, presence of diabetes and hypertension, and prolonged length of stay.
+Measures:
+. Optimize medication regimen, considering the patient's high medication_count, to minimize potential adverse interactions and simplify management.
+. Implement a post-discharge monitoring plan, focusing on patients with diabetes and hypertension, to promptly address any exacerbations or concerns.
+. Arrange for a safe discharge destination, ideally with home healthcare services, to support the patient's complex needs and reduce readmission risk.
+. Provide patient and caregiver education on disease management, emphasizing the importance of adherence to medication and follow-up appointments, particularly for elderly patients with multiple comorbidities."
+"2025-09-01_17-36-22","90","doctor","","41","Female","256.0","36.6","0","0","3","9","Rehab","125.0","95.0","30.0","1","0","1","2","0.3","3.0","49.881864","High","1","Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Failed: module 'datetime' has no attribute 'now'","Summary: The patient's high risk of 30-day readmission is primarily driven by a combination of factors including high <u>bmi</u>, elevated <u>cholesterol</u>, and prolonged <u>length_of_stay</u>, along with a higher <u>medication_count</u>.
+Measures:
+. Optimize medication regimen to minimize potential adverse interactions and simplify the treatment plan, considering the patient's high <u>medication_count</u>.
+. Implement a weight management plan to address the patient's high <u>bmi</u> and reduce the risk of related complications.
+. Provide lipid-lowering therapy and dietary counseling to manage the patient's elevated <u>cholesterol</u> levels.
+. Arrange for post-discharge follow-up and monitoring to ensure a smooth transition and address any potential issues promptly, given the patient's prolonged <u>length_of_stay</u>."
+"2025-09-01_17-39-30","89","r","rithikaofficial24@gmail.com","78","Female","320.0","56.0","1","1","10","10","Rehab","116.0","93.0","23.0","1","2","1","2","0.909091","3.333333","45.980551","High","1","Elderly with diabetes|Multiple comorbidities|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Email disabled: set EMAIL_USER and EMAIL_PASS in .env; Admin:Failed: name 'generate_admin_pdf' is not defined","Summary: Patient ID 89, an elderly individual with a high BMI, multiple comorbidities including diabetes and hypertension, and a prolonged length of stay, is at increased risk for 30-day readmission.
+Measures:
+. Optimize medication regimen to minimize potential interactions and side effects due to high medication count.
+. Implement a comprehensive discharge plan with close follow-up to monitor and manage diabetes and hypertension.
+. Arrange for post-discharge support and rehabilitation services to address potential mobility and functional limitations related to high BMI and prolonged length of stay.
+. Consider a transitional care program to facilitate a smooth transition from hospital to home and reduce readmission risk."
+"2025-09-01_17-46-49","89","r","rithikaofficial24@gmail.com","78","Female","320.0","56.0","1","1","10","10","Rehab","116.0","93.0","23.0","1","2","1","2","0.909091","3.333333","45.980551","High","1","Elderly with diabetes|Multiple comorbidities|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Email disabled: set EMAIL_USER and EMAIL_PASS in .env; Admin:Sent","Summary: Patient ID 89, an elderly individual with a high BMI, multiple comorbidities including diabetes and hypertension, and a prolonged length of stay, is at increased risk for 30-day readmission due to factors such as advanced age, complex medication regimen, and significant cardiovascular risk factors like elevated cholesterol and pulse pressure.
+
+Measures:
+. Optimize medication management by simplifying the regimen and ensuring adherence to reduce the risk associated with high medication_count.
+. Implement a comprehensive discharge plan that addresses the patient's diabetes and hypertension, including follow-up appointments and home health services to mitigate risks associated with these comorbidities.
+. Consider a post-discharge nutrition and lifestyle intervention to address the patient's high BMI and cholesterol levels, aiming to reduce cardiovascular risk factors.
+. Arrange for close follow-up and monitoring after discharge to promptly address any potential issues that may arise given the patient's prolonged length_of_stay and complex medical history."
+"2025-09-01_20-46-17","129","doctor","","89","Female","235.0","35.3","1","0","10","4","Rehab","121.0","70.0","51.0","0","1","1","2","2.0","5.0","43.450814","High","1","Age ≥ 85|Elderly with diabetes|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Skipped; Admin:Sent","Summary: The patient's high risk of 30-day readmission is primarily driven by advanced age, high bmi, multiple medications, and presence of diabetes, which collectively increase the likelihood of complications and readmission.
+Measures:
+. Optimize medication regimen to minimize potential interactions and side effects associated with high medication_count.
+. Implement a post-discharge diet and exercise plan to address high bmi and manage diabetes.
+. Arrange for close follow-up and monitoring after discharge to promptly address any potential issues related to advanced age and comorbidities.
+. Consider referring the patient to a diabetes management program to improve glycemic control and reduce readmission risk."
+"2025-09-01_20-47-50","129","doctor","mkeead047@rmkcet.ac.in","89","Female","235.0","35.3","1","0","10","4","Rehab","121.0","70.0","51.0","0","1","1","2","2.0","5.0","43.450814","High","1","Age ≥ 85|Elderly with diabetes|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Email disabled: set EMAIL_USER and EMAIL_PASS in .env; Admin:Sent","Summary: The patient's high risk of 30-day readmission is primarily driven by advanced age, high bmi, multiple medications, and presence of diabetes, which collectively contribute to a heightened risk of complications and readmission.
+Measures:
+. Optimize medication regimen to minimize potential interactions and simplify management for the patient, considering their high medication_count.
+. Implement a post-discharge diet and exercise plan to address the patient's high bmi and diabetes.
+. Arrange for close follow-up and monitoring after discharge, given the patient's advanced age and complex medical profile.
+. Consider referring the patient to a diabetes management program to improve glycemic control and reduce readmission risk."
+"2025-09-01_20-48-01","129","doctor","mkeead047@rmkcet.ac.in","89","Female","235.0","35.3","1","0","10","4","Rehab","121.0","70.0","51.0","0","1","1","2","2.0","5.0","43.450814","High","1","Age ≥ 85|Elderly with diabetes|Severe obesity with diabetes|Discharge to nursing/rehab facility","Doctor:Email disabled: set EMAIL_USER and EMAIL_PASS in .env; Admin:Sent","Summary: The patient's high risk of 30-day readmission is primarily driven by advanced age, high bmi, multiple medications, and presence of diabetes, which collectively contribute to a heightened risk of complications and readmission.
+Measures:
+. Optimize medication regimen to minimize potential interactions and side effects associated with high medication_count.
+. Implement a post-discharge dietary and exercise plan to address high bmi and manage diabetes.
+. Arrange for close follow-up and monitoring after discharge to promptly address any potential issues related to advanced age and comorbidities.
+. Consider referring the patient to a diabetes management program to improve glycemic control and reduce readmission risk."

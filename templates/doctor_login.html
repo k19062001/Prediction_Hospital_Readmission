@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Doctor Login - MedPredict AI{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card p-4" style="width: 400px;">
+    <h3 class="text-center mb-4 text-primary">
+        <i class="fas fa-user-md me-2"></i>Doctor Login
+    </h3>
+    <form method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" required style="background: transparent; color: var(--text-color);" />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <div class="input-group">
+          <input type="password" name="password" id="doctorPassword" class="form-control" required style="background: transparent; color: var(--text-color);" />
+          <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('doctorPassword')">
+            <i class="fa fa-eye"></i>
+          </button>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-gradient w-100 mt-3">Login</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  function togglePassword(id) {
+    const input = document.getElementById(id);
+    const icon = event.currentTarget.querySelector('i');
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        input.type = "password";
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+  }
+</script>
+{% endblock %}
