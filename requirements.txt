@@ -1,13 +1,20 @@
+# Build dependencies for compiling pandas and other packages
+setuptools>=50.0.0
+wheel>=0.36.0
+cython>=0.29.21
+
 Flask==3.0.3
 gunicorn==22.0.0
 joblib==1.4.2
-pandas==2.2.2
-numpy==1.26.4
+pandas==2.2.3 --only-binary :all:
+
+numpy==2.1.0
 scikit-learn==1.5.2
 matplotlib==3.9.2
 seaborn==0.13.2
 plotly==5.24.1
 python-dotenv==1.0.1
 reportlab==4.2.5
-transformers==4.44.2
-torch==2.4.1
+tokenizers==0.20.3 --only-binary :all:
+transformers==4.46.0 --only-binary :all:
+torch==2.5.0
