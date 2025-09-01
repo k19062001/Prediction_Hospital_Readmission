@@ -6,6 +6,7 @@ cython>=0.29.21
 Flask==3.0.3
 Flask-SQLAlchemy==3.1.1
 SQLAlchemy==2.0.35
+lightgbm==4.5.0
 gunicorn==22.0.0
 joblib==1.4.2
 pandas==2.2.3 --only-binary :all:
@@ -20,4 +21,5 @@ reportlab==4.2.5
 tokenizers==0.20.3 --only-binary :all:
 transformers==4.46.0 --only-binary :all:
 torch==2.5.0
+
 
